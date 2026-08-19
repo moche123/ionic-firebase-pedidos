@@ -1,0 +1,18 @@
+<ion-item lines="none" class="cart-item">
+  <ion-img class="cart-item-photo" [src]="item.product.photoUrl" [alt]="item.product.name"></ion-img>
+
+  <ion-label class="cart-item-info">
+    <p class="cart-item-name">{{ item.product.name }}</p>
+    <p class="cart-item-price">${{ item.product.discountedPrice.toFixed(2) }}</p>
+  </ion-label>
+
+  <div class="quantity-control" slot="end">
+    <ion-button fill="clear" size="small" (click)="decrease()">
+      <ion-icon slot="icon-only" name="remove-circle-outline"></ion-icon>
+    </ion-button>
+    <span class="quantity-value">{{ item.quantity }}</span>
+    <ion-button fill="clear" size="small" (click)="increase()">
+      <ion-icon slot="icon-only" name="add-circle-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-item>

@@ -1,0 +1,36 @@
+.cart-item {
+  --padding-start: 8px;
+  --inner-padding-end: 8px;
+}
+
+.cart-item-photo {
+  width: 56px;
+  height: 56px;
+  min-width: 56px;
+  border-radius: var(--app-radius-sm);
+  overflow: hidden;
+  margin-right: 12px;
+}
+
+.cart-item-name {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.cart-item-price {
+  color: var(--ion-color-primary);
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.quantity-control {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.quantity-value {
+  min-width: 18px;
+  text-align: center;
+  font-weight: 700;
+}

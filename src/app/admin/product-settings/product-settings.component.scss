@@ -1,0 +1,27 @@
+.admin-content {
+  --padding-start: 16px;
+  --padding-end: 16px;
+  --padding-top: 8px;
+}
+
+.toolbar-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 8px;
+}
+
+.form-field {
+  margin-bottom: 12px;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin: 12px 0 24px;
+}
+
+.upload-label {
+  color: var(--ion-color-primary);
+  font-weight: 700;
+  cursor: pointer;
+}

@@ -1,0 +1,88 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title class="page-title">Product settings</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="admin-content">
+  <div class="toolbar-actions">
+    <ion-button (click)="newProduct()">
+      <ion-icon slot="start" name="add"></ion-icon>
+      New product
+    </ion-button>
+  </div>
+
+  @if (editing) {
+    <h3 class="section-title section-banner">Product details</h3>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Name"
+      labelPlacement="floating"
+      [(ngModel)]="draft.name"
+    ></ion-input>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Regular price"
+      labelPlacement="floating"
+      type="number"
+      [(ngModel)]="draft.regularPrice"
+    ></ion-input>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Discounted price"
+      labelPlacement="floating"
+      type="number"
+      [(ngModel)]="draft.discountedPrice"
+    ></ion-input>
+
+    <ion-item lines="none">
+      <label class="upload-label" for="product-photo-upload">Choose photo</label>
+      <input id="product-photo-upload" type="file" accept="image/*" hidden (change)="onImageSelected($event)" />
+    </ion-item>
+
+    @if (draft.photoUrl) {
+      <img class="image-preview" [src]="draft.photoUrl" alt="Product preview" />
+    }
+
+    <div class="form-actions">
+      <ion-button (click)="saveProduct()">Save</ion-button>
+      <ion-button fill="clear" (click)="editing = false">Cancel</ion-button>
+    </div>
+  }
+
+  <hr />
+
+  @if (products().length) {
+    <ion-list>
+      @for (product of products(); track product.id) {
+        <ion-item>
+          <ion-label>{{ product.name }}</ion-label>
+          <ion-buttons slot="end">
+            <ion-button (click)="editProduct(product)">
+              <ion-icon slot="icon-only" name="create-sharp" color="primary"></ion-icon>
+            </ion-button>
+            <ion-button (click)="deleteProduct(product)">
+              <ion-icon slot="icon-only" name="trash-bin" color="danger"></ion-icon>
+            </ion-button>
+          </ion-buttons>
+        </ion-item>
+      }
+    </ion-list>
+  } @else {
+    <div class="empty-state">
+      <ion-icon name="fast-food-outline"></ion-icon>
+      <p>No products yet — add one above.</p>
+    </div>
+  }
+</ion-content>

@@ -1,0 +1,134 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title class="page-title">Profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="profile-content">
+  @if (!uid) {
+    <h3 class="section-title section-banner">
+      {{ loginMode ? 'Log in' : 'Create your account' }}
+    </h3>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Email"
+      labelPlacement="floating"
+      type="email"
+      [(ngModel)]="customer.email"
+    ></ion-input>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Password"
+      labelPlacement="floating"
+      type="password"
+      [(ngModel)]="password"
+    ></ion-input>
+
+    @if (!loginMode) {
+      <ion-input
+        class="form-field"
+        fill="outline"
+        label="Full name"
+        labelPlacement="floating"
+        [(ngModel)]="customer.name"
+      ></ion-input>
+
+      <ion-input
+        class="form-field"
+        fill="outline"
+        label="Phone"
+        labelPlacement="floating"
+        [(ngModel)]="customer.phone"
+      ></ion-input>
+
+      <ion-input
+        class="form-field"
+        fill="outline"
+        label="National ID"
+        labelPlacement="floating"
+        [(ngModel)]="customer.nationalId"
+      ></ion-input>
+
+      <ion-input
+        class="form-field"
+        fill="outline"
+        label="Delivery address notes"
+        labelPlacement="floating"
+        [(ngModel)]="customer.locationNote"
+      ></ion-input>
+    }
+
+    <div class="form-actions">
+      @if (!loginMode) {
+        <ion-button (click)="register()">Sign up</ion-button>
+        <ion-button fill="clear" (click)="loginMode = true">I already have an account</ion-button>
+      } @else {
+        <ion-button (click)="login()">Log in</ion-button>
+        <ion-button fill="clear" (click)="loginMode = false">Create an account instead</ion-button>
+      }
+    </div>
+  } @else {
+    <h3 class="section-title section-banner">Your details</h3>
+
+    <div class="profile-photo-row">
+      <img class="profile-photo" [src]="customer.photoUrl || 'assets/icon/favicon.png'" alt="Profile" />
+      <label class="upload-label" for="photo-upload">Change photo</label>
+      <input id="photo-upload" type="file" accept="image/*" hidden (change)="onImageSelected($event)" />
+    </div>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Email"
+      labelPlacement="floating"
+      [value]="customer.email"
+      [disabled]="true"
+    ></ion-input>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Full name"
+      labelPlacement="floating"
+      [(ngModel)]="customer.name"
+    ></ion-input>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Phone"
+      labelPlacement="floating"
+      [(ngModel)]="customer.phone"
+    ></ion-input>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="National ID"
+      labelPlacement="floating"
+      [(ngModel)]="customer.nationalId"
+    ></ion-input>
+
+    <ion-input
+      class="form-field"
+      fill="outline"
+      label="Delivery address notes"
+      labelPlacement="floating"
+      [(ngModel)]="customer.locationNote"
+    ></ion-input>
+
+    <div class="form-actions">
+      <ion-button (click)="saveCustomer()">Save</ion-button>
+      <ion-button fill="clear" color="danger" (click)="logout()">Log out</ion-button>
+    </div>
+  }
+</ion-content>

@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title class="page-title">Order tracking</ion-title>
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/home']">
+        <ion-icon slot="icon-only" name="storefront-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="map-wrap">
+    <div #mapContainer class="map"></div>
+    @if (mapTilesUnavailable()) {
+      <div class="map-offline-note">
+        <ion-icon name="cloud-offline-outline"></ion-icon>
+        <span>Map needs an internet connection to load — tracking still works.</span>
+      </div>
+    }
+  </div>
+
+  <div class="tracking-panel">
+    @if (currentStatus() === 'delivered') {
+      <div class="delivered-banner">
+        <ion-icon name="checkmark-circle"></ion-icon>
+        <span>Delivered! Enjoy your meal.</span>
+      </div>
+    }
+
+    <ol class="steps">
+      @for (step of steps; track step.status) {
+        <li class="step" [class.done]="isStepDone(step.status)">
+          <span class="step-dot"></span>
+          <span class="step-label">{{ step.label }}</span>
+        </li>
+      }
+    </ol>
+
+    <ion-button [routerLink]="['/home']" expand="block" fill="clear">Back to store</ion-button>
+  </div>
+</ion-content>

@@ -1,37 +1,36 @@
-
-export interface Cliente{
-    uid: string;
-    nombre: string;
-    dni: string;
-    email: string;
-    celular: string;
-    foto: string;
-    referencia: string;
-    ubicacion: any;
-}
-export interface Producto {
-    nombre:string;
-    precioNormal:number;
-    precioReducido:number;
-    foto:string;
-    id:string;
-    fecha:Date;
+export interface Customer {
+  uid: string;
+  name: string;
+  nationalId: string;
+  email: string;
+  phone: string;
+  photoUrl: string;
+  locationNote: string;
+  location: unknown;
 }
 
-export interface Pedido{
-    id:string;
-    cliente: Cliente;
-    productos:ProductoPedido[];
-    precioTotal:number;
-    fecha: Date;
-    estado:EstadoPedido;
-    valoracion:number
+export interface Product {
+  id: string;
+  name: string;
+  regularPrice: number;
+  discountedPrice: number;
+  photoUrl: string;
+  date: Date;
 }
 
-
-export interface ProductoPedido{
-    producto:Producto;
-    cantidad:number;
+export interface OrderItem {
+  product: Product;
+  quantity: number;
 }
 
-export type EstadoPedido = 'enviado' | 'visto' | 'camino' | 'entregado'
+export type OrderStatus = 'sent' | 'seen' | 'on-the-way' | 'delivered';
+
+export interface Order {
+  id: string;
+  customer: Customer | null;
+  items: OrderItem[];
+  totalPrice: number | null;
+  date: Date;
+  status: OrderStatus;
+  rating: number | null;
+}

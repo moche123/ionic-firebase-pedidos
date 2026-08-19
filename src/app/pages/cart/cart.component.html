@@ -1,0 +1,45 @@
+<ion-header>
+  <ion-toolbar color="secondary">
+    <ion-title class="page-title">Cart</ion-title>
+    <ion-buttons slot="start">
+      <ion-button (click)="openMenu()">
+        <ion-icon slot="icon-only" name="menu-sharp"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+
+    <ion-buttons slot="end">
+      <ion-button [routerLink]="['/home']">
+        <ion-icon slot="icon-only" name="storefront-sharp"></ion-icon>
+      </ion-button>
+      <ion-button [routerLink]="['/profile']">
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  @if (cartService.order()?.items?.length) {
+    <ion-list lines="none">
+      @for (item of cartService.order()?.items; track item.product.id) {
+        <app-cart-item [item]="item"></app-cart-item>
+      }
+    </ion-list>
+  } @else {
+    <div class="empty-state">
+      <ion-icon name="cart-outline"></ion-icon>
+      <p>Your cart is empty.</p>
+      <ion-button [routerLink]="['/home']" fill="clear">Browse the store</ion-button>
+    </div>
+  }
+</ion-content>
+
+@if (cartService.order()?.items?.length) {
+  <ion-footer class="cart-footer">
+    <div class="cart-total">
+      <span>Total</span>
+      <span class="cart-total-value">${{ cartService.total().toFixed(2) }}</span>
+    </div>
+    <ion-button expand="block" (click)="checkout()">Checkout</ion-button>
+  </ion-footer>
+}

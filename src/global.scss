@@ -1,63 +1,78 @@
 /*
  * App Global CSS
- * ----------------------------------------------------------------------------
- * Put style rules here that you want to apply globally. These styles are for
- * the entire app and not just one component. Additionally, this file can be
- * used as an entry point to import other CSS/Sass files to be included in the
- * output CSS.
- * For more information on global stylesheets, visit the documentation:
- * https://ionicframework.com/docs/layout/global-stylesheets
+ * Put style rules here that apply across the whole app rather than a single
+ * component. Component-specific Ionic CSS is wired up in angular.json.
  */
 
-/* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
-
-/* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
-@import '~@ionic/angular/css/display.css';
-
-/* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,800;1,100&display=swap');
-
-.titulo{
-    // font-family: 'Raleway', sans-serif;
-    font-size: 17px;
-    font-weight: bold;
-    color: rgb(0, 0, 0);
+body,
+ion-content {
+  font-family: var(--app-font);
 }
 
-.subtitulo{
-    // font-family: 'Raleway', sans-serif;
-    font-size: 15px;
-    font-weight: bold;
-
+.page-title {
+  font-size: 17px;
+  font-weight: 800;
 }
 
-.normal{
-    // font-family: 'Raleway', sans-serif !important;
-    font-size: 15px !important;
-    color: rgb(0, 0, 0) !important;
-
-}   
-.encabezado{
-    background-color: rgb(255, 81, 0);
-    color: black;
-    border-radius: 30px;
-    padding: 10px;
-    text-align: center;
+.section-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
 }
 
-.image{
-    padding: 10px;
-    border: 1px solid rgb(137, 139, 139);
-    width: 100%;
-    border-radius: 20px;
-    margin: auto;
+.body-text {
+  font-size: 15px;
+}
+
+.muted-text {
+  font-size: 13px;
+  color: var(--ion-color-medium);
+}
+
+.section-banner {
+  background: var(--ion-color-light);
+  color: var(--ion-color-secondary);
+  border-radius: var(--app-radius);
+  padding: 14px 16px;
+  text-align: center;
+  margin: 12px 16px;
+}
+
+.image-preview {
+  padding: 8px;
+  border: 1px solid var(--ion-color-light-shade);
+  width: 100%;
+  border-radius: var(--app-radius);
+  margin: auto;
+  object-fit: cover;
+  aspect-ratio: 4 / 3;
+}
+
+/* Leaflet renders these marker icons outside Angular's template, so they need
+   to be unscoped/global rather than living in tracking.component.scss. */
+.courier-marker {
+  font-size: 24px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+}
+
+.pin-marker {
+  font-size: 22px;
+  line-height: 1;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.35));
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding: 64px 24px;
+  text-align: center;
+  color: var(--ion-color-medium);
+
+  ion-icon {
+    font-size: 48px;
+    color: var(--ion-color-medium-tint);
+  }
 }
