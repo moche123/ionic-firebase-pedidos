@@ -1,5 +1,7 @@
 {
-  "name": "comidaapp",
-  "integrations": {},
+  "name": "ionic-firebase-orders",
+  "integrations": {
+    "capacitor": {}
+  },
   "type": "angular"
 }

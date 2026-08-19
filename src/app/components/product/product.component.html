@@ -1,0 +1,20 @@
+<ion-card class="product-card">
+  <div class="photo-wrap">
+    <ion-img class="product-photo" [src]="product.photoUrl" [alt]="product.name"></ion-img>
+
+    <ion-button class="add-button" shape="round" (click)="addToCart()">
+      <ion-icon slot="icon-only" name="add"></ion-icon>
+    </ion-button>
+  </div>
+
+  <div class="product-body">
+    <p class="product-name">{{ product.name }}</p>
+
+    <div class="product-prices">
+      @if (product.discountedPrice < product.regularPrice) {
+        <span class="price-old">${{ product.regularPrice.toFixed(2) }}</span>
+      }
+      <span class="price-current">${{ product.discountedPrice.toFixed(2) }}</span>
+    </div>
+  </div>
+</ion-card>

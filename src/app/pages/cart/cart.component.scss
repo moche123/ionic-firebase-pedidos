@@ -1,0 +1,18 @@
+.cart-footer {
+  padding: 12px 16px calc(12px + env(safe-area-inset-bottom));
+  background: var(--ion-background-color);
+  box-shadow: 0 -8px 20px -8px rgba(20, 33, 61, 0.15);
+}
+
+.cart-total {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+  font-weight: 700;
+}
+
+.cart-total-value {
+  font-size: 20px;
+  color: var(--ion-color-primary);
+}

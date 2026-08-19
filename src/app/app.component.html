@@ -1,43 +1,36 @@
 <ion-app>
-  <ion-split-pane contentId="main">
-    <!--  the side menu  -->
-    <ion-menu contentId="main" menuId="principal">
+  <!-- overlay menu (not a split-pane) so the hamburger button always shows and works, on any screen size -->
+  <ion-menu contentId="main" menuId="main-menu">
+    <ion-header>
+      <ion-toolbar>
+        <ion-title class="section-title">Menu</ion-title>
+      </ion-toolbar>
+    </ion-header>
 
-      <ion-header>
-        <ion-toolbar>
-          <ion-title class="subtitulo">Menu</ion-title>
-        </ion-toolbar>
-      </ion-header>
+    <ion-content>
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item button="true" [routerLink]="['/home']">
+          <ion-label class="body-text">Store</ion-label>
+          <ion-icon slot="start" name="storefront-sharp"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
 
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item button="true" [routerLink]="['/cart']">
+          <ion-label class="body-text">Cart</ion-label>
+          <ion-icon slot="start" name="cart-sharp"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
 
-      <ion-content>
+      <ion-menu-toggle [autoHide]="false">
+        <ion-item button="true" detail="true" [routerLink]="['/admin/products']">
+          <ion-label class="body-text">Product settings</ion-label>
+          <ion-icon slot="start" name="create-sharp"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-content>
+  </ion-menu>
 
-        <ion-menu-toggle autoHide=false>
-          <ion-item button=true default=true [routerLink]="['/']">
-            <ion-label class="normal">Tienda</ion-label>
-            <ion-icon slot="start" name="storefront-sharp"></ion-icon>
-          </ion-item>
-        </ion-menu-toggle>
-
-        <ion-menu-toggle autoHide=false>
-          <ion-item button=true default=true [routerLink]="['/carrito']">
-            <ion-label class="normal">Cuenta</ion-label>
-            <ion-icon slot="start" name="logo-usd"></ion-icon>
-          </ion-item>
-        </ion-menu-toggle>
-
-        <ion-menu-toggle autoHide=false>
-          <ion-item button=true detail=true [routerLink]="['/set-productos']" >
-            <ion-label class="normal">Configuracion de productos</ion-label>
-            <ion-icon slot="start" name="create-sharp"></ion-icon>
-          </ion-item>
-        </ion-menu-toggle>
-
-      </ion-content>
-
-    </ion-menu>
-  
-    <!-- the main content -->
-    <ion-router-outlet id="main"></ion-router-outlet>
-  </ion-split-pane>
+  <!-- the main content -->
+  <ion-router-outlet id="main"></ion-router-outlet>
 </ion-app>
