@@ -1,6 +1,6 @@
 # Delivery App
 
-A small Ionic + Angular food ordering app: browse products, add them to a cart, check out, and manage your profile. Includes a simple admin screen for managing the product catalog.
+A small Ionic + Angular mock food ordering app: browse products, add them to a cart, check out, and manage your profile. Includes a simple admin screen for managing the product catalog.
 
 The backend is swappable: the app runs against an in-memory **mock backend** by default (no setup required) or against a real **Firebase** project.
 
